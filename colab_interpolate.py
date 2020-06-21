@@ -69,8 +69,8 @@ while input_frame < final_frame - 1:
     filename_frame_1 = os.path.join(frames_dir, f'{input_frame:0>5d}.png')
     filename_frame_2 = os.path.join(frames_dir, f'{input_frame+1:0>5d}.png')
 
-    X0 = torch.from_numpy(np.transpose(imread(filename_frame_1), (2,0,1)).astype("float32") / 255.0).type(args.dtype)
-    X1 = torch.from_numpy(np.transpose(imread(filename_frame_2), (2,0,1)).astype("float32") / 255.0).type(args.dtype)
+    X0 = torch.from_numpy(np.transpose(imread(filename_frame_1), (2,0,1)).astype("float16") / 255.0).type(args.dtype)
+    X1 = torch.from_numpy(np.transpose(imread(filename_frame_2), (2,0,1)).astype("float16") / 255.0).type(args.dtype)
 
     assert (X0.size(1) == X1.size(1))
     assert (X0.size(2) == X1.size(2))
