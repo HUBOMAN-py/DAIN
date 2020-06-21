@@ -44,9 +44,9 @@ def Vimeo_90K_loader(root, im_path, input_frame_size = (3, 256, 448), output_fra
     X2 = np.transpose(im_pre2, (2, 0, 1))
 
     y = np.transpose(im_mid, (2, 0, 1))
-    return X0.astype("float32")/ 255.0, \
-            X2.astype("float32")/ 255.0,\
-            y.astype("float32")/ 255.0
+    return X0.astype("float16")/ 255.0, \
+            X2.astype("float16")/ 255.0,\
+            y.astype("float16")/ 255.0
 
 
 
