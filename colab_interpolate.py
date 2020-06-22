@@ -153,8 +153,8 @@ while input_frame < final_frame - 1:
     frames_left = final_frame - input_frame
     estimated_seconds_left = frames_left * loop_timer.avg
     estimated_time_left = datetime.timedelta(seconds=estimated_seconds_left)
-    print("memory allocated: "+torch.cuda.memory_allocated())
-    print("max memory allocated"+torch.cuda.max_memory_allocated())
+    print(torch.cuda.memory_allocated())
+    print(torch.cuda.max_memory_allocated())
     print(f"****** Processed frame {input_frame} | Time per frame (avg): {loop_timer.avg:2.2f}s | Time left: {estimated_time_left} ******************" )
 
 # Copying last frame
