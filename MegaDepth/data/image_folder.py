@@ -54,7 +54,7 @@ class ImageFolder(data.Dataset):
 
     def load_MD(self, img_path, depth_path):
 
-        MD_img = np.float32(io.imread(img_path))/255.0
+        MD_img = np.float16(io.imread(img_path))/255.0
 
         hdf5_file_read = h5py.File(depth_path,'r')
         gt = hdf5_file_read.get('/depth')
@@ -82,7 +82,7 @@ class ImageFolder(data.Dataset):
         gt = resize(gt, (self.input_height, self.input_width), order = 0)
         gt = gt*max_depth
 
-        mask = np.float32(gt > 1e-8)
+        mask = np.float16(gt > 1e-8)
 
         color_rgb = np.ascontiguousarray(color_rgb)
         gt = np.ascontiguousarray(gt)
@@ -138,7 +138,7 @@ class ImageFolder_TEST(data.Dataset):
 
     def load_SfM_ORD(self, img_path, targets_path):
 
-        sfm_image = np.float32(io.imread(img_path))/255.0
+        sfm_image = np.float16(io.imread(img_path))/255.0
         resized_sfm_img = resize(sfm_image, (self.input_height, self.input_width), order = 1)
 
         color_rgb = np.zeros((self.input_height, self.input_width,3))
